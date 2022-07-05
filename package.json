@@ -1,0 +1,35 @@
+{
+  "name": "musicify",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000M\u0000u\u0000s\u0000i\u0000c\u0000i\u0000f\u0000y\u0000\r\u0000 \u0000",
+  "main": "./dist/index.js",
+  "scripts": {
+    "tsc": "tsc -w",
+    "watch": "nodemon",    
+    "start": "start npm run tsc && npm run watch",
+    "webpack": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elem15/Musicify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elem15/Musicify/issues"
+  },
+  "homepage": "https://github.com/elem15/Musicify#readme",
+  "dependencies": {
+    "apollo-server": "^3.9.0",
+    "graphql": "^16.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18",
+    "typescript": "^4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-graphql-loader": "^1.0.2"
+  }
+}
