@@ -1,61 +1,69 @@
-import { ApolloServer, gql } from 'apollo-server';
-// import schema from  './_schema';
-// const graph = require('./')
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-// const typeDefs = gql`${schema}`
-const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
+const { buildSchema } = require('graphql');
+require('dotenv').config()
 
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
+const axios = require('axios').default;
+const baseURL = process.env.GENRES_URL;
+const PORT = process.env.PORT || 4000;
+// Make a request for a user with a given ID
+
+axios.get("http://localhost:3001/v1/genres")
+  .then(function (response: Response): void {
+    // handle success
+
+    // console.log(response.data);
+  })
+  .catch(function (error: Error) {
+
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+// Construct a schema, using GraphQL schema language
+const schema = buildSchema(`
+  type Genre {
+    _id: ID!
+    name: String
+    description: String
+    country: String
+    year: String
+    subGenres: [Genre] 
   }
 
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
-    books: [Book]
+    genre(id: ID!): Genre
+    genres(limit: Int, offset: Int): [Genre]    
   }
-`;
-
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
+  
+  type Mutation {
+    createGenre(name: String, description: String, country: String, year: Int): Genre
+  }
+  `);
+  
+// The root provides a resolver function for each API endpoint
+const root = {
+  // limit: async () => {
+  //   const response = await axios.get("http://localhost:3001/v1/genres");
+  //   return response.data.limit;
+  // },
+  genres: async (limit: number, offset: number) => {
+    const response = await axios.get(baseURL);
+    return response.data.items;
   },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-  {
-    title: 'Piece and war',
-    author: 'Lev Tolstoy',
-  },
-  {
-    title: 'Piece and war',
-    author: 'Lev Tolstoy',
-  },
-];
-
-const resolvers = {
-  Query: {
-    books: () => books,
+  genre: async (id: {id: string}) => {
+    const response = await axios.get(baseURL);
+    return response.data.items.find((item: {_id: string})  => item._id === id.id);
   },
 };
 
-const server = new ApolloServer({
-  typeDefs,
-  // sch,
-  resolvers,
-  csrfPrevention: true,
-  cache: 'bounded',
-});
-
-// The `listen` method launches a web server.
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+const app = express();
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
+app.listen(PORT);
+console.log(`Running a GraphQL API server at http://localhost:${PORT}/graphql`);
