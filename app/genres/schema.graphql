@@ -1,0 +1,43 @@
+
+  type Genre {
+    _id: ID!
+    name: String
+    description: String
+    country: String
+    year: String
+    subGenres: [Genre] 
+  }
+
+  type JWT {
+    jwt: String
+  }
+
+  type User {
+    _id: ID!
+    firstName: String
+    lastName: String
+    password: String
+    email: String
+  }
+
+  type Query {
+    genre(id: ID!): Genre
+    genres(limit: Int, offset: Int): [Genre]
+    limit: Int
+    register( 
+      firstName: String,
+      lastName: String,
+      password: String,
+      email: String      
+      ): User   
+    login(    
+      password: String,
+      email: String      
+      ): JWT   
+  }
+  
+  type Mutation {
+    createGenre(name: String, description: String, country: String, year: Int): Genre
+  }
+
+
