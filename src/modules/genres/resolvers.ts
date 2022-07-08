@@ -46,7 +46,7 @@ export default {
     return response.data;
   },
   deleteGenre: async ({ id }: { id: number }) => {
-    const response = await axios.delete(`${genresURL}/62c70dc59521a89d97aa09a4`,
+    const response = await axios.delete(`${genresURL}/${id}`,
       {
         headers: {
           'Authorization': `Basic ${auth.token}`

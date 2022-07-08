@@ -4,7 +4,8 @@ import { auth } from '../../index';
 
 const usersURL: string = process.env.USERS_URL || '';
 
-type User = {
+interface User {
+  _id: string;
   firstName: string;
   lastName: string;
   password: string;
@@ -26,6 +27,7 @@ export default {
     });
     return response.data;
   },
+
   jwt: async ({
     password,
     email
@@ -36,5 +38,11 @@ export default {
     });
     auth.token = response.data.jwt
     return response.data;
-  }
+  },
+
+  getById: async ({ id }: { id: number}) => {
+    const response = await axios.get(`${usersURL}/${id}`);
+    return response.data;
+  },
+
 };

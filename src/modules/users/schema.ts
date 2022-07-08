@@ -12,6 +12,7 @@ export default `type JWT {
     lastName: String
     password: String
     email: String
+    iat: Int
   }`
 
   // `;
