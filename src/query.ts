@@ -6,7 +6,7 @@ type Query {
     password: String,
     email: String      
     ): User   
-  login(    
+  jwt(    
     password: String,
     email: String      
     ): JWT   

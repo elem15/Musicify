@@ -1,6 +1,6 @@
 import axios from 'axios';
 import 'dotenv/config';
-import { auth } from '../index';
+import { auth } from '../../index';
 
 const usersURL: string = process.env.USERS_URL || '';
 
@@ -26,7 +26,7 @@ export default {
     });
     return response.data;
   },
-  login: async ({
+  jwt: async ({
     password,
     email
   }: User) => {

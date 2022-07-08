@@ -1,11 +1,11 @@
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import { buildSchema } from 'graphql';
-import userResolvers from './users/resolvers';
-import genreResolvers from './genres/resolvers';
+import userResolvers from './modules/users/resolvers';
+import genreResolvers from './modules/genres/resolvers';
 import query from './query';
-import usersSchema from './users/schema';
-import genresSchema from './genres/schema'
+import usersSchema from './modules/users/schema';
+import genresSchema from './modules/genres/schema'
 import 'dotenv/config'
 
 const PORT = process.env.PORT || 4000;
