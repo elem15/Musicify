@@ -6,7 +6,7 @@
   "scripts": {
     "tsc": "tsc -w",
     "start": "nodemon",
-    "build": "webpack",
+    "build": "webpack && node dist/bundle.js",
     "watch": "start npm run tsc && npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

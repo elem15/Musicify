@@ -32,7 +32,7 @@ export default {
       });
     return response.data;
   },
-  addGenresToFavorite: async ({ id }: FavoriteItemId) => {
+  addGenresToFavorites: async ({ id }: FavoriteItemId) => {
     const response = await axios.put(`${favoritesURL}/add`,
       { type: "genres", id },
       {
@@ -42,7 +42,7 @@ export default {
       });
     return response.data;
   },
-  addBandsToFavorite: async ({ id }: FavoriteItemId) => {
+  addBandsToFavorites: async ({ id }: FavoriteItemId) => {
     const response = await axios.put(`${favoritesURL}/add`,
       { type: UpdatedItem.BANDS, id },
       {
@@ -52,7 +52,7 @@ export default {
       });
     return response.data;
   },
-  addArtistsToFavorite: async ({ id }: FavoriteItemId) => {
+  addArtistsToFavorites: async ({ id }: FavoriteItemId) => {
     const response = await axios.put(`${favoritesURL}/add`,
       { type: UpdatedItem.ARTISTS, id },
       {
@@ -62,7 +62,7 @@ export default {
       });
     return response.data;
   },
-  addTracksToFavorite: async ({ id }: FavoriteItemId) => {
+  addTracksToFavorites: async ({ id }: FavoriteItemId) => {
     const response = await axios.put(`${favoritesURL}/add`,
       { type: UpdatedItem.TRACK, id },
       {

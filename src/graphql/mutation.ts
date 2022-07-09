@@ -56,9 +56,9 @@ type Mutation {
     ): Album
   deleteAlbum(id: ID!): deleteGenre
 
-  addGenresToFavorite(id: ID!): Favorite
-  addBandsToFavorite(id: ID!): Favorite
-  addArtistsToFavorite(id: ID!): Favorite
-  addTracksToFavorite(id: ID!): Favorite
+  addGenresToFavorites(id: ID!): Favorite
+  addBandsToFavorites(id: ID!): Favorite
+  addArtistsToFavorites(id: ID!): Favorite
+  addTracksToFavorites(id: ID!): Favorite
 }
 `
