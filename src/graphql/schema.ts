@@ -8,6 +8,7 @@ import artistsSchema from '../modules/artists/schema';
 import bandsSchema from '../modules/bands/schema';
 import tracksSchema from '../modules/tracks/schema';
 import albumsSchema from '../modules/albums/schema';
+import favoritesSchema from '../modules/favorites/schema';
 
 export default buildSchema(`
   ${query}
@@ -18,4 +19,5 @@ export default buildSchema(`
   ${bandsSchema}
   ${tracksSchema}
   ${albumsSchema}
+  ${favoritesSchema}
   `);

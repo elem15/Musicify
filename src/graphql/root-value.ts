@@ -5,6 +5,7 @@ import artistResolvers from '../modules/artists/resolvers'
 import bandResolvers from '../modules/bands/resolvers';
 import trackResolvers from '../modules/tracks/resolvers';
 import albumResolvers from '../modules/albums/resolvers';
+import favoriteResolvers from '../modules/favorites/resolvers';
 
 export default {
   ...userResolvers, 
@@ -12,5 +13,6 @@ export default {
   ...artistResolvers,
   ...bandResolvers,
   ...trackResolvers,
-  ...albumResolvers
+  ...albumResolvers,
+  ...favoriteResolvers,
 }

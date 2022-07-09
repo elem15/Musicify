@@ -26,4 +26,6 @@ type Query {
 
   album(id: ID!): Album
   albums(limit: Int, offset: Int): [Album]
+
+  favorites: Favorite
 }`
