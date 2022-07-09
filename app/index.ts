@@ -7,12 +7,11 @@ import genreSchema from './modules/genres/schema';
 import usersSchema from '../src/users/schema';
 import genresResolvers from './modules/genres/resolvers'
 import usersResolvers from '../src/users/resolvers';
-import GenreAPI from './modules/genres/datasources/genre-api';
 import { readFileSync } from 'fs'
 const typeDefs = readFileSync(path.join(__dirname, './modules/genres/schema.graphql'), 'utf8');
 import { buildSchema } from 'graphql';
 
-const PORT = +process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 const schema = buildSchema(typeDefs);
 export const auth = {
   token: '',

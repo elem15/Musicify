@@ -3,8 +3,13 @@ type Band {
   _id: ID!
   name: String
   origin: String
-  members: [String]
+  members: [ID]
   website: String
-  genres: [Genre]
-} 
+  genres: [ID]
+}
+type Member {  
+  artist: String
+  instrument: String
+  year: [String]
+}
 `

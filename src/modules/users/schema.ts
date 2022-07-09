@@ -1,7 +1,4 @@
-import { buildSchema } from 'graphql';
-import { gql } from 'apollo-server'
 
-// export default gql`
 export default `type JWT {
     jwt: String
   }
@@ -14,6 +11,3 @@ export default `type JWT {
     email: String
     iat: Int
   }`
-
-  // `;
-

@@ -7,8 +7,7 @@ type Artist {
   birthDate: String
   birthPlace: String
   country: String
-  bands: [Band]
+  bands: [ID]
   instruments: [String]
 }
-
 `

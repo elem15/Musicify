@@ -20,4 +20,10 @@ type Query {
 
   band(id: ID!): Band
   bands(limit: Int, offset: Int): [Band]
+
+  track(id: ID!): Track
+  tracks(limit: Int, offset: Int): [Track]
+
+  album(id: ID!): Album
+  albums(limit: Int, offset: Int): [Album]
 }`

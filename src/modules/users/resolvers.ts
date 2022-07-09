@@ -1,6 +1,6 @@
 import axios from 'axios';
 import 'dotenv/config';
-import { auth } from '../../index';
+import { auth } from '../../auth';
 
 const usersURL: string = process.env.USERS_URL || '';
 

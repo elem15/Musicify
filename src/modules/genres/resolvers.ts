@@ -1,14 +1,15 @@
 import axios from 'axios';
 import 'dotenv/config'
-import { auth } from '../../index';
+import { auth } from '../../auth';
 
 const genresURL: string = process.env.GENRES_URL || '';
 
-type Genre = {
-  name: string
-  description: string
-  country: String
-  year: number
+interface Genre {
+  _id: string;
+  name: string;
+  description: string;
+  country: string;
+  year: string;
 }
 type Pagination = {
   limit: number
@@ -17,7 +18,7 @@ type Pagination = {
 
 
 export default {
-  genres: async ({ limit, offset }: Pagination) => {
+  genres: async ({ limit=5, offset=0 }: Pagination) => {
     const response = await axios.get(`${genresURL}?limit=${limit}&offset=${offset}`);
     return response.data.items;
   },

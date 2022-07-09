@@ -1,6 +1,6 @@
 import axios from 'axios';
 import 'dotenv/config'
-import { auth } from '../../index';
+import { auth } from '../../auth';
 
 const artistsURL: string = process.env.ARTISTS_URL || '';
 
@@ -22,7 +22,7 @@ type Pagination = {
 
 
 export default {
-  artists: async ({ limit, offset }: Pagination) => {
+  artists: async ({ limit=5, offset=0 }: Pagination) => {
     const response = await axios.get(`${artistsURL}?limit=${limit}&offset=${offset}`);
     return response.data.items;
   },
